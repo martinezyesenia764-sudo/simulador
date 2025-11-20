@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de Encabezado IPv4</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<main>
+<section class="card">
+  <h1>🌷Encabezado del datagrama IPv4🌷</h1>
+  <p class="subtext">💜Proyecto de Yesenia Martínez Galvan💜</p>
+
+  <form id="ipv4Form">
+    <label>Versión (solo 4):</label>
+    <input type="number" value="4" readonly />
+
+    <label>Longitud del encabezado (IHL 5–15):</label>
+    <input type="number" id="ihl" min="5" max="15" value="5" />
+
+    <label>Tipo de Servicio (TOS):</label>
+    <select id="tos">
+      <option value="00">Normal (0x00)</option>
+      <option value="10">Prioridad (0x10)</option>
+      <option value="04">Baja demora (0x04)</option>
+      <option value="08">Alta fiabilidad (0x08)</option>
+    </select>
+
+    <label>Identificación:</label>
+    <input type="text" id="ident" placeholder="Ej. 1A2B" />
+    <button type="button" class="mini-btn" onclick="genIdent()">Aleatorio</button>
+
+    <label>Flags (solo 0 y 1):</label>
+    <input type="text" id="flags" placeholder="Ej. 010" />
+    <button type="button" class="mini-btn" onclick="genFlags()">Aleatorio</button>
+
+    <label>Desplazamiento del fragmento (hasta 13 ceros):</label>
+    <input type="text" id="fragOff" placeholder="0000000000000" />
+    <button type="button" class="mini-btn" onclick="genFrag()">Aleatorio</button>
+
+    <label>Tiempo de vida (TTL):</label>
+    <input type="number" id="ttl" min="0" max="255" value="64" />
+
+    <label>Protocolo:</label>
+    <select id="protocol">
+      <option value="01">ICMP (1)</option>
+      <option value="06">TCP (6)</option>
+      <option value="11">UDP (17)</option>
+    </select>
+
+    <label>Checksum:</label>
+    <input type="text" id="checksum" placeholder="Ej. AB3F" />
+    <button type="button" class="mini-btn" onclick="genChecksum()">Aleatorio</button>
+
+    <label>IP Fuente:</label>
+    <input type="text" id="ipSrc" placeholder="192.168.0.1" />
+
+    <label>IP Destino:</label>
+    <input type="text" id="ipDst" placeholder="192.168.0.2" />
+
+    <label>Opciones (hex):</label>
+    <input type="text" id="options" placeholder="AABBCCDDEE" />
+
+    <label>Datos (mensaje):</label>
+    <input type="text" id="data" placeholder="Mensaje aquí" />
+
+    <button type="button" onclick="generarDatagrama()">💜 Generar Datagrama</button>
+  </form>
+
+  <div id="resultado" class="resultado"></div>
+</section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
