@@ -35,11 +35,14 @@ document.getElementById("ipDst").addEventListener("input", ipInputHandler);
 const optionsInput = document.getElementById("options");
 const ihlInput = document.getElementById("ihl");
 
-// 🔥 Genera opciones aleatorias según IHL y deshabilita input
+// 🔥 Bloquear escritura en Opciones (Hex)
+optionsInput.readOnly = true;
+
+// 🔥 Genera opciones aleatorias según IHL
 function generateRandomOptions(ihlValue) {
   const extraWords = ihlValue - 5;
-  const bytesNeeded = extraWords * 4;   // cada palabra = 4 bytes
-  const hexNeeded = bytesNeeded * 2;    // 1 byte = 2 hex
+  const bytesNeeded = extraWords * 4;  // cada palabra = 4 bytes
+  const hexNeeded = bytesNeeded * 2;   // 1 byte = 2 hex
 
   if (extraWords <= 0) {
     optionsInput.value = "";
@@ -59,14 +62,11 @@ function generateRandomOptions(ihlValue) {
 // 🔥 Evento cuando cambia el IHL
 ihlInput.addEventListener("input", e => {
   let val = parseInt(e.target.value);
-  val = Math.max(5, Math.min(15, val));
+  val = Math.max(5, Math.min(15, val));  // IHL entre 5 y 15
   e.target.value = val;
 
-  generateRandomOptions(val);
+  generateRandomOptions(val);  // generar opciones aleatorias
 });
-
-optionsInput.disabled = true;
-
 
 // RANDOM BUTTONS
 function genIdent(){
