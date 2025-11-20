@@ -1,0 +1,7 @@
+title: " Datagrama IPv4"
+theme: jekyll-theme-cayman
+include:
+  - "*.html"
+  - "*.php"
+  - "*.css"
+  - "*.js"
